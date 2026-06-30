@@ -1,6 +1,6 @@
 // ======================================
 // Cute AI Camera
-// script.js
+// Blur.js
 // ======================================
 
 // Element
@@ -76,6 +76,9 @@ async function startCamera() {
         video.srcObject = stream;
 
         await video.play();
+
+        video.style.transform = "scaleX(-1)";
+        canvas.style.transform = "scaleX(-1)";
 
         resizeCanvas();
 
