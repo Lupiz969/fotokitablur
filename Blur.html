@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+    <title>Cute AI Camera</title>
+
+    <!-- Google Font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+
+    <link rel="preconnect"
+          href="https://fonts.gstatic.com"
+          crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600&display=swap"
+          rel="stylesheet">
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="Blur.css">
+
+</head>
+
+<body>
+
+    <!-- Background -->
+    <div class="background">
+
+        <span class="blob pink"></span>
+
+        <span class="blob blue"></span>
+
+        <span class="blob yellow"></span>
+
+    </div>
+
+    <!-- Card -->
+    <main class="card">
+
+        <!-- Header -->
+        <header class="header">
+
+            <div class="logo">
+
+                📸
+
+            </div>
+
+            <div class="title">
+
+                <h1>Cute AI Camera</h1>
+
+                <p>
+                    Peace Gesture Recognition
+                </p>
+
+            </div>
+
+        </header>
+
+        <!-- Camera -->
+        <section class="camera-wrapper">
+
+            <video
+                id="video"
+                autoplay
+                muted
+                playsinline>
+            </video>
+
+            <canvas id="canvas"></canvas>
+
+        </section>
+
+        <!-- Buttons -->
+        <section class="button-group">
+
+            <button id="startBtn">
+
+                ▶ Start Camera
+
+            </button>
+
+            <button id="stopBtn">
+
+                ⏹ Stop Camera
+
+            </button>
+
+        </section>
+
+    </main>
+
+    <!-- MediaPipe Hands -->
+    <script src="https://cdn.jsdelivr.net/npm/@mediapipe/camera_utils/camera_utils.js"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/@mediapipe/control_utils/control_utils.js"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/@mediapipe/drawing_utils/drawing_utils.js"></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/@mediapipe/hands/hands.js"></script>
+
+    <!-- JavaScript -->
+    <script src="Blur.js"></script>
+
+    <script src="gesture.js"></script>
+
+</body>
+
+</html>
