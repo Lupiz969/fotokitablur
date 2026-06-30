@@ -1,28 +1,28 @@
 /* ======================================
    Cute AI Camera
-   ====================================== */
+====================================== */
 
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
 }
 
-body {
+body{
 
-    font-family: 'Fredoka', sans-serif;
+    font-family:'Fredoka',sans-serif;
 
-    min-height: 100vh;
+    min-height:100vh;
 
-    display: flex;
+    display:flex;
 
-    justify-content: center;
+    justify-content:center;
 
-    align-items: center;
+    align-items:center;
 
-    overflow: hidden;
+    overflow:hidden;
 
-    background: linear-gradient(
+    background:linear-gradient(
         135deg,
         #ffd6e8,
         #d8f4ff,
@@ -30,9 +30,9 @@ body {
         #e8dcff
     );
 
-    background-size: 400% 400%;
+    background-size:400% 400%;
 
-    animation: gradientMove 12s ease infinite;
+    animation:gradientMove 12s ease infinite;
 
 }
 
@@ -40,65 +40,65 @@ body {
    Background
 =========================== */
 
-.background {
+.background{
 
-    position: fixed;
+    position:fixed;
 
-    inset: 0;
+    inset:0;
 
-    overflow: hidden;
+    overflow:hidden;
 
-    z-index: -1;
-
-}
-
-.blob {
-
-    position: absolute;
-
-    border-radius: 50%;
-
-    filter: blur(70px);
-
-    opacity: .45;
-
-    animation: floatBlob 8s ease-in-out infinite;
+    z-index:-1;
 
 }
 
-.pink {
+.blob{
 
-    width: 280px;
-    height: 280px;
+    position:absolute;
 
-    background: #ff7eb3;
+    border-radius:50%;
 
-    left: -90px;
-    top: -80px;
+    filter:blur(70px);
 
-}
+    opacity:.45;
 
-.blue {
-
-    width: 260px;
-    height: 260px;
-
-    background: #80d8ff;
-
-    right: -80px;
-    top: 150px;
+    animation:floatBlob 8s ease-in-out infinite;
 
 }
 
-.yellow {
+.pink{
 
-    width: 320px;
-    height: 320px;
+    width:280px;
+    height:280px;
 
-    background: #ffe66d;
+    background:#ff7eb3;
 
-    bottom: -120px;
-    left: 40%;
+    left:-90px;
+    top:-80px;
+
+}
+
+.blue{
+
+    width:260px;
+    height:260px;
+
+    background:#80d8ff;
+
+    right:-80px;
+    top:150px;
+
+}
+
+.yellow{
+
+    width:320px;
+    height:320px;
+
+    background:#ffe66d;
+
+    bottom:-120px;
+    left:40%;
 
 }
 
@@ -106,21 +106,21 @@ body {
    Card
 =========================== */
 
-.card {
+.card{
 
-    width: min(920px,95%);
+    width:min(920px,95%);
 
-    padding: 30px;
+    padding:30px;
 
-    border-radius: 30px;
+    border-radius:30px;
 
-    background: rgba(255,255,255,.70);
+    background:rgba(255,255,255,.72);
 
-    backdrop-filter: blur(18px);
+    backdrop-filter:blur(18px);
 
-    border: 1px solid rgba(255,255,255,.45);
+    border:1px solid rgba(255,255,255,.45);
 
-    box-shadow: 0 20px 45px rgba(0,0,0,.15);
+    box-shadow:0 20px 45px rgba(0,0,0,.15);
 
 }
 
@@ -128,59 +128,59 @@ body {
    Header
 =========================== */
 
-.header {
+.header{
 
-    display: flex;
+    display:flex;
 
-    align-items: center;
+    align-items:center;
 
-    gap: 18px;
+    gap:18px;
 
-    margin-bottom: 25px;
+    margin-bottom:25px;
 
 }
 
-.logo {
+.logo{
 
-    width: 72px;
+    width:72px;
 
-    height: 72px;
+    height:72px;
 
-    border-radius: 50%;
+    border-radius:50%;
 
-    display: flex;
+    display:flex;
 
-    justify-content: center;
+    justify-content:center;
 
-    align-items: center;
+    align-items:center;
 
-    font-size: 34px;
+    font-size:34px;
 
-    background: linear-gradient(
+    background:linear-gradient(
         135deg,
         #ff6fa5,
         #7fdcff
     );
 
-    color: white;
+    color:white;
 
-    box-shadow: 0 8px 20px rgba(0,0,0,.18);
-
-}
-
-.title h1 {
-
-    font-size: 34px;
-
-    color: #ff4b8b;
+    box-shadow:0 8px 20px rgba(0,0,0,.18);
 
 }
 
-.title p {
+.title h1{
 
-    margin-top: 5px;
+    font-size:34px;
 
-    color: #666;
+    color:#ff4b8b;
+
+}
+
+.title p{
+
+    margin-top:5px;
+
+    color:#666;
 
 }
 
@@ -188,63 +188,66 @@ body {
    Camera
 =========================== */
 
-.camera-wrapper {
+.camera-wrapper{
 
-    position: relative;
+    position:relative;
 
-    width: 100%;
+    width:100%;
 
-    aspect-ratio: 16 / 9;
+    aspect-ratio:16/9;
 
-    overflow: hidden;
+    overflow:hidden;
 
-    border-radius: 24px;
+    border-radius:24px;
 
-    background: black;
+    background:#000;
 
-    border: 6px solid white;
+    border:6px solid #fff;
 
-    box-shadow: 0 12px 28px rgba(0,0,0,.20);
+    box-shadow:0 12px 28px rgba(0,0,0,.20);
 
 }
 
-#video {
+#video{
 
-    width: 100%;
+    width:100%;
 
-    height: 100%;
+    height:100%;
 
-    object-fit: cover;
+    object-fit:cover;
 
-    display: block;
+    display:block;
 
-    transition: .4s;
+    transition:.4s;
+
+    /* Preview kamera tidak mirror */
+    transform:scaleX(1);
 
 }
 
 /* Blur saat Peace */
 
-#video.blur {
+#video.blur{
 
-    filter: blur(10px);
+    filter:blur(10px);
 
 }
 
-/* Canvas */
+#canvas{
 
-#canvas {
+    position:absolute;
 
-    position: absolute;
+    top:0;
 
-    left: 0;
+    left:0;
 
-    top: 0;
+    width:100%;
 
-    width: 100%;
+    height:100%;
 
-    height: 100%;
+    pointer-events:none;
 
-    pointer-events: none;
+    transform:scaleX(1);
 
 }
 
@@ -252,41 +255,41 @@ body {
    Button
 =========================== */
 
-.button-group {
+.button-group{
 
-    margin-top: 28px;
+    margin-top:28px;
 
-    display: flex;
+    display:flex;
 
-    justify-content: center;
+    justify-content:center;
 
-    gap: 18px;
-
-}
-
-button {
-
-    border: none;
-
-    cursor: pointer;
-
-    padding: 16px 28px;
-
-    border-radius: 50px;
-
-    font-family: inherit;
-
-    font-size: 18px;
-
-    color: white;
-
-    transition: .3s;
+    gap:18px;
 
 }
 
-#startBtn {
+button{
 
-    background: linear-gradient(
+    border:none;
+
+    cursor:pointer;
+
+    padding:16px 28px;
+
+    border-radius:50px;
+
+    font-family:inherit;
+
+    font-size:18px;
+
+    color:white;
+
+    transition:.3s;
+
+}
+
+#startBtn{
+
+    background:linear-gradient(
         135deg,
         #61d887,
         #4ecdc4
@@ -294,9 +297,9 @@ button {
 
 }
 
-#stopBtn {
+#stopBtn{
 
-    background: linear-gradient(
+    background:linear-gradient(
         135deg,
         #ff7096,
         #ff4d6d
@@ -304,11 +307,11 @@ button {
 
 }
 
-button:hover {
+button:hover{
 
-    transform: translateY(-4px);
+    transform:translateY(-4px);
 
-    box-shadow: 0 12px 22px rgba(0,0,0,.18);
+    box-shadow:0 12px 22px rgba(0,0,0,.18);
 
 }
 
@@ -316,45 +319,45 @@ button:hover {
    Animation
 =========================== */
 
-@keyframes gradientMove {
+@keyframes gradientMove{
 
-    0% {
+    0%{
 
-        background-position: 0% 50%;
-
-    }
-
-    50% {
-
-        background-position: 100% 50%;
+        background-position:0% 50%;
 
     }
 
-    100% {
+    50%{
 
-        background-position: 0% 50%;
+        background-position:100% 50%;
+
+    }
+
+    100%{
+
+        background-position:0% 50%;
 
     }
 
 }
 
-@keyframes floatBlob {
+@keyframes floatBlob{
 
-    0% {
+    0%{
 
-        transform: translateY(0px);
-
-    }
-
-    50% {
-
-        transform: translateY(35px);
+        transform:translateY(0);
 
     }
 
-    100% {
+    50%{
 
-        transform: translateY(0px);
+        transform:translateY(35px);
+
+    }
+
+    100%{
+
+        transform:translateY(0);
 
     }
 
@@ -364,47 +367,47 @@ button:hover {
    Responsive
 =========================== */
 
-@media (max-width: 768px) {
+@media(max-width:768px){
 
-    .card {
+    .card{
 
-        width: 95%;
+        width:95%;
 
-        padding: 20px;
-
-    }
-
-    .header {
-
-        flex-direction: column;
-
-        text-align: center;
+        padding:20px;
 
     }
 
-    .title h1 {
+    .header{
 
-        font-size: 28px;
+        flex-direction:column;
 
-    }
-
-    .camera-wrapper {
-
-        aspect-ratio: 3 / 4;
+        text-align:center;
 
     }
 
-    .button-group {
+    .title h1{
 
-        flex-direction: column;
+        font-size:28px;
 
     }
 
-    button {
+    .camera-wrapper{
 
-        width: 100%;
+        aspect-ratio:3/4;
 
-        font-size: 17px;
+    }
+
+    .button-group{
+
+        flex-direction:column;
+
+    }
+
+    button{
+
+        width:100%;
+
+        font-size:17px;
 
     }
 
