@@ -1,5 +1,5 @@
 /* ======================================
-   Cute AI Camera
+   VINTAGE AI CAMERA UI
 ====================================== */
 
 *{
@@ -10,7 +10,7 @@
 
 body{
 
-    font-family:'Fredoka',sans-serif;
+    font-family:'Special Elite', cursive;
 
     min-height:100vh;
 
@@ -22,18 +22,8 @@ body{
 
     overflow:hidden;
 
-    background:linear-gradient(
-        135deg,
-        #ffd6e8,
-        #d8f4ff,
-        #fff4bf,
-        #e8dcff
-    );
-
-    background-size:400% 400%;
-
-    animation:gradientMove 12s ease infinite;
-
+    background:
+    radial-gradient(circle at top,#7b5d47,#3d2c22 70%);
 }
 
 /* ===========================
@@ -48,105 +38,111 @@ body{
 
     overflow:hidden;
 
-    z-index:-1;
+    z-index:-2;
 
 }
 
-.blob{
+.background::before{
+
+    content:"";
 
     position:absolute;
 
-    border-radius:50%;
+    inset:0;
 
-    filter:blur(70px);
+    background:
+    repeating-radial-gradient(
+        circle,
+        rgba(255,255,255,.02) 0px,
+        rgba(255,255,255,.02) 1px,
+        transparent 2px,
+        transparent 4px
+    );
 
     opacity:.45;
 
-    animation:floatBlob 8s ease-in-out infinite;
+    animation:grain .25s steps(8) infinite;
 
 }
 
-.pink{
+.background::after{
 
-    width:280px;
-    height:280px;
+    content:"";
 
-    background:#ff7eb3;
+    position:absolute;
 
-    left:-90px;
-    top:-80px;
+    inset:0;
 
-}
-
-.blue{
-
-    width:260px;
-    height:260px;
-
-    background:#80d8ff;
-
-    right:-80px;
-    top:150px;
+    background:
+    radial-gradient(circle,
+    transparent 45%,
+    rgba(0,0,0,.55));
 
 }
 
-.yellow{
-
-    width:320px;
-    height:320px;
-
-    background:#ffe66d;
-
-    bottom:-120px;
-    left:40%;
-
+/* Blob tidak dipakai */
+.blob{
+    display:none;
 }
 
 /* ===========================
-   Card
+   Camera Body
 =========================== */
 
 .card{
 
-    width:min(920px,95%);
+    width:min(980px,95%);
 
-    padding:30px;
+    background:#3d2d23;
 
-    border-radius:30px;
+    border-radius:24px;
 
-    background:rgba(255,255,255,.72);
+    border:8px solid #1d1511;
 
-    backdrop-filter:blur(18px);
+    overflow:hidden;
 
-    border:1px solid rgba(255,255,255,.45);
-
-    box-shadow:0 20px 45px rgba(0,0,0,.15);
+    box-shadow:
+    0 30px 60px rgba(0,0,0,.55);
 
 }
 
 /* ===========================
-   Header
+   Top Bar
 =========================== */
 
 .header{
+
+    background:
+    linear-gradient(
+        to bottom,
+        #73533f,
+        #4d372b
+    );
+
+    padding:22px 28px;
 
     display:flex;
 
     align-items:center;
 
-    gap:18px;
+    justify-content:space-between;
 
-    margin-bottom:25px;
+    border-bottom:4px solid #241915;
 
 }
 
 .logo{
 
-    width:72px;
+    width:70px;
 
-    height:72px;
+    height:70px;
 
     border-radius:50%;
+
+    background:
+    radial-gradient(circle,
+    #d4af37,
+    #8f6a18);
 
     display:flex;
 
@@ -154,59 +150,91 @@ body{
 
     align-items:center;
 
-    font-size:34px;
+    font-size:30px;
 
-    background:linear-gradient(
-        135deg,
-        #ff6fa5,
-        #7fdcff
-    );
+    color:#fff;
 
-    color:white;
+    box-shadow:
+    inset 0 3px 5px rgba(255,255,255,.25),
+    0 4px 10px rgba(0,0,0,.5);
 
-    box-shadow:0 8px 20px rgba(0,0,0,.18);
+}
+
+.title{
+
+    flex:1;
+
+    margin-left:20px;
 
 }
 
 .title h1{
 
-    font-size:34px;
+    color:#f6e7c3;
 
-    color:#ff4b8b;
+    font-size:30px;
+
+    letter-spacing:3px;
 
 }
 
 .title p{
 
-    margin-top:5px;
+    color:#d8c4a3;
 
-    color:#666;
+    margin-top:8px;
+
+    font-size:14px;
+
+    letter-spacing:2px;
+
+}
+
+/* Lampu REC */
+
+.header::after{
+
+    content:"● REC";
+
+    color:#ff4d4d;
+
+    font-size:18px;
+
+    font-weight:bold;
+
+    animation:blink 1s infinite;
 
 }
 
 /* ===========================
-   Camera
+   Camera Screen
 =========================== */
 
 .camera-wrapper{
 
     position:relative;
 
-    width:100%;
+    margin:30px;
 
-    aspect-ratio:16/9;
+    border-radius:12px;
 
     overflow:hidden;
 
-    border-radius:24px;
+    aspect-ratio:16/9;
 
-    background:#000;
+    background:black;
 
-    border:6px solid #fff;
+    border:14px solid #c9a04f;
 
-    box-shadow:0 12px 28px rgba(0,0,0,.20);
+    box-shadow:
+
+    inset 0 0 15px rgba(0,0,0,.6),
+
+    0 15px 25px rgba(0,0,0,.5);
 
 }
+
+/* Video */
 
 #video{
 
@@ -218,28 +246,43 @@ body{
 
     display:block;
 
-    transition:.4s;
-
-    /* Preview kamera tidak mirror */
     transform:scaleX(1);
+
+    filter:
+
+    sepia(.35)
+
+    contrast(1.08)
+
+    brightness(.92)
+
+    saturate(.8);
 
 }
 
-/* Blur saat Peace */
+/* Blur tetap */
 
 #video.blur{
 
-    filter:blur(10px);
+    filter:
+
+    blur(10px)
+
+    sepia(.35)
+
+    contrast(1.08)
+
+    brightness(.92);
 
 }
+
+/* Canvas */
 
 #canvas{
 
     position:absolute;
 
-    top:0;
-
-    left:0;
+    inset:0;
 
     width:100%;
 
@@ -247,71 +290,153 @@ body{
 
     pointer-events:none;
 
-    transform:scaleX(1);
+}
+
+/* Vignette */
+
+.camera-wrapper::before{
+
+    content:"";
+
+    position:absolute;
+
+    inset:0;
+
+    pointer-events:none;
+
+    background:
+
+    radial-gradient(circle,
+
+    transparent 58%,
+
+    rgba(0,0,0,.55));
+
+}
+
+/* Grain */
+
+.camera-wrapper::after{
+
+    content:"";
+
+    position:absolute;
+
+    inset:0;
+
+    pointer-events:none;
+
+    opacity:.08;
+
+    background:
+
+    repeating-radial-gradient(
+
+        circle,
+
+        rgba(255,255,255,.2) 0,
+
+        rgba(255,255,255,.2) .8px,
+
+        transparent 2px,
+
+        transparent 4px
+
+    );
 
 }
 
 /* ===========================
-   Button
+   Bottom Controls
 =========================== */
 
 .button-group{
-
-    margin-top:28px;
 
     display:flex;
 
     justify-content:center;
 
-    gap:18px;
+    gap:20px;
+
+    padding:0 30px 30px;
 
 }
 
 button{
 
-    border:none;
-
-    cursor:pointer;
-
-    padding:16px 28px;
-
-    border-radius:50px;
-
-    font-family:inherit;
+    font-family:'Special Elite', cursive;
 
     font-size:18px;
 
+    padding:16px 30px;
+
+    border:none;
+
+    border-radius:50px;
+
+    cursor:pointer;
+
     color:white;
 
-    transition:.3s;
+    transition:.25s;
+
+    letter-spacing:2px;
 
 }
+
+/* Start */
 
 #startBtn{
 
-    background:linear-gradient(
-        135deg,
-        #61d887,
-        #4ecdc4
-    );
+    background:
+
+    linear-gradient(
+
+    to bottom,
+
+    #caa24d,
+
+    #8e6821);
+
+    box-shadow:
+
+    inset 0 2px 2px rgba(255,255,255,.3),
+
+    0 5px 12px rgba(0,0,0,.35);
 
 }
 
+/* Stop */
+
 #stopBtn{
 
-    background:linear-gradient(
-        135deg,
-        #ff7096,
-        #ff4d6d
-    );
+    background:
+
+    linear-gradient(
+
+    to bottom,
+
+    #8a2c2c,
+
+    #5d1111);
+
+    box-shadow:
+
+    inset 0 2px 2px rgba(255,255,255,.25),
+
+    0 5px 12px rgba(0,0,0,.35);
 
 }
 
 button:hover{
 
-    transform:translateY(-4px);
+    transform:translateY(-3px);
 
-    box-shadow:0 12px 22px rgba(0,0,0,.18);
+}
+
+button:active{
+
+    transform:translateY(2px);
 
 }
 
@@ -319,45 +444,51 @@ button:hover{
    Animation
 =========================== */
 
-@keyframes gradientMove{
+@keyframes grain{
 
     0%{
 
-        background-position:0% 50%;
+        transform:translate(0,0);
 
     }
 
-    50%{
+    20%{
 
-        background-position:100% 50%;
+        transform:translate(-3%,2%);
+
+    }
+
+    40%{
+
+        transform:translate(2%,-2%);
+
+    }
+
+    60%{
+
+        transform:translate(-2%,3%);
+
+    }
+
+    80%{
+
+        transform:translate(3%,1%);
 
     }
 
     100%{
 
-        background-position:0% 50%;
+        transform:translate(0,0);
 
     }
 
 }
 
-@keyframes floatBlob{
-
-    0%{
-
-        transform:translateY(0);
-
-    }
+@keyframes blink{
 
     50%{
 
-        transform:translateY(35px);
-
-    }
-
-    100%{
-
-        transform:translateY(0);
+        opacity:.2;
 
     }
 
@@ -373,8 +504,6 @@ button:hover{
 
         width:95%;
 
-        padding:20px;
-
     }
 
     .header{
@@ -383,15 +512,25 @@ button:hover{
 
         text-align:center;
 
+        gap:15px;
+
+    }
+
+    .title{
+
+        margin:0;
+
     }
 
     .title h1{
 
-        font-size:28px;
+        font-size:22px;
 
     }
 
     .camera-wrapper{
+
+        margin:20px;
 
         aspect-ratio:3/4;
 
@@ -406,8 +545,6 @@ button:hover{
     button{
 
         width:100%;
-
-        font-size:17px;
 
     }
 
