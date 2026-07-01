@@ -1,6 +1,6 @@
 // ======================================
-// Cute AI Camera
-// Gesture Detection
+// Vintage AI Camera
+// Gesture Detection (No Landmark Drawing)
 // ======================================
 
 const hands = new Hands({
@@ -9,7 +9,10 @@ const hands = new Hands({
     }
 });
 
+// ======================================
 // Konfigurasi MediaPipe
+// ======================================
+
 hands.setOptions({
     maxNumHands: 1,
     modelComplexity: 1,
@@ -28,58 +31,41 @@ hands.onResults(onResults);
 
 function onResults(results) {
 
-    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    // Bersihkan canvas (jika masih ada)
+    if (typeof ctx !== "undefined" && typeof canvas !== "undefined") {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+    }
 
+    // Tidak ada tangan
     if (!results.multiHandLandmarks || results.multiHandLandmarks.length === 0) {
 
-        disableBlur();
-
-        blurEnabled = false;
+        if (blurEnabled) {
+            disableBlur();
+            blurEnabled = false;
+        }
 
         return;
-
     }
 
     const landmarks = results.multiHandLandmarks[0];
 
-    // Gambar garis tangan
-    drawConnectors(
-        ctx,
-        landmarks,
-        HAND_CONNECTIONS,
-        {
-            color: "#6EC6FF",
-            lineWidth: 4
-        }
-    );
+    // ================================
+    // TIDAK ADA drawConnectors()
+    // TIDAK ADA drawLandmarks()
+    // ================================
 
-    // Gambar titik tangan
-    drawLandmarks(
-        ctx,
-        landmarks,
-        {
-            color: "#FF4F9A",
-            radius: 5
-        }
-    );
-
-    // Cek gesture Peace
     if (isPeaceGesture(landmarks)) {
 
         if (!blurEnabled) {
-
             enableBlur();
             blurEnabled = true;
-
         }
 
     } else {
 
         if (blurEnabled) {
-
             disableBlur();
             blurEnabled = false;
-
         }
 
     }
@@ -87,13 +73,10 @@ function onResults(results) {
 }
 
 // ======================================
-// Peace Detection
+// Peace Gesture Detection
 // ======================================
 
 function isPeaceGesture(lm) {
-
-    const thumbFold =
-        lm[4].x < lm[3].x;
 
     const indexUp =
         lm[8].y < lm[6].y;
@@ -123,19 +106,15 @@ function isPeaceGesture(lm) {
 window.addEventListener("cameraStarted", () => {
 
     if (camera) {
-
         camera.stop();
-
     }
 
     camera = new Camera(video, {
 
         onFrame: async () => {
-
             await hands.send({
                 image: video
             });
-
         },
 
         width: 1280,
